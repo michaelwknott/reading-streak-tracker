@@ -1,6 +1,4 @@
 import calendar
-from pprint import pprint as pp
-from datetime import date
 from typing import NamedTuple
 
 
@@ -38,7 +36,7 @@ class CodingStreak:
             output.append("<tr>")
             for day in week:
                 if day.day == 0:
-                    output.append(f"<td></td>")
+                    output.append("<td></td>")
                 elif day.coded:
                     output.append(
                         f"<td class='coded' style='background-color: green;'>{day.day}</td>"
