@@ -8,3 +8,4 @@
 django>=4.2,<5
 django-allauth
 PyYAML # For fixtures since YAML allows for comments
+django-browser-reload

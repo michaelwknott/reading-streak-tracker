@@ -44,6 +44,8 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    # django browser reload
+    "django_browser_reload",
 ]
 
 PROJECT_APPS = ["apps.home", "apps.users"]
@@ -60,6 +62,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # django-allauth
     "allauth.account.middleware.AccountMiddleware",
+    # django browser reload
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = "aapo.urls"
