@@ -8,6 +8,6 @@ def index(request):
     return render(request, "home/index.html")
 
 
-# @login_required
+@login_required
 def calendar(request):
     return render(request, "home/calendar.html")
