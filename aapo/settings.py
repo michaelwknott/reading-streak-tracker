@@ -100,6 +100,24 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
+# Note:
+# Try and keep the authentication process as frictionless as possible for now
+# Require only username and single password entry (can reset manually if needed..)
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_REQUIRED = False  # disable "E-Mail" field for signup
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  # disable password-confirmation field for signup
+
+ACCOUNT_AUTHENTICATION_METHOD = "username"  # use username for login
+ACCOUNT_SESSION_REMEMBER = True  # disable "Remember Me" checkbox on sign-in form
+
+# Allow user to sign out without additional confirmation
+ACCOUNT_LOGOUT_ON_GET = True
+
+LOGIN_REDIRECT_URL = "/calendar"
+ACCOUNT_LOGOUT_REDIRECT_URL = "/"
+
+ACCOUNT_FORMS = {"signup": "apps.users.forms.CustomSignupForm"}
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
