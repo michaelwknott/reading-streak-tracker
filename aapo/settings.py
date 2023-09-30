@@ -35,6 +35,8 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Required to set django.forms explicitly for form templates to work
+    "django.forms",
 ]
 
 THIRD_PARTY_APPS = [
@@ -44,6 +46,9 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     # django browser reload
     "django_browser_reload",
+    # crispy forms
+    "crispy_forms",
+    "crispy_tailwind",
 ]
 
 PROJECT_APPS = ["apps.home", "apps.users"]
@@ -85,6 +90,9 @@ TEMPLATES = [
     },
 ]
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = "tailwind"
+
 WSGI_APPLICATION = "aapo.wsgi.application"
 
 #############################################
@@ -116,7 +124,11 @@ ACCOUNT_LOGOUT_ON_GET = True
 LOGIN_REDIRECT_URL = "/calendar"
 ACCOUNT_LOGOUT_REDIRECT_URL = "/"
 
+# Custom Signup Form (without the e-mail field)
 ACCOUNT_FORMS = {"signup": "apps.users.forms.CustomSignupForm"}
+
+# Project-wide form renderer to define the default template to use for forms
+FORM_RENDERER = "apps.home.forms.CustomFormRenderer"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

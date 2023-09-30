@@ -20,8 +20,13 @@
 
 {% include "_navbar.html" %}
 
-{% block content %}
-{% endblock content %}
+{# Wrap page contents from views in a nice-looking container #}
+<div class="min-h-screen pt-20 flex flex-col items-center bg-gray-100">
+  <div class="p-4 sm:p-8 bg-white rounded-lg shadow-md w-full max-w-3xl">
+    {% block content %}
+    {% endblock content %}
+  </div>
+</div>
 
 {% block extra_body %}
 {% endblock extra_body %}
