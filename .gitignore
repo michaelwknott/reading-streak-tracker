@@ -1,3 +1,14 @@
+#############################
+# Custom .gitignore entries #
+#############################
+
+# PyCharm IDE settings
+.idea
+
+###########################################################
+# Default .gitignore file for Python projects from GitHub #
+###########################################################
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
