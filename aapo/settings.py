@@ -39,7 +39,12 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    # django-allauth
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+]
 
 PROJECT_APPS = [
     "apps.home",
@@ -55,6 +60,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # django-allauth
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "aapo.urls"
@@ -62,7 +69,10 @@ ROOT_URLCONF = "aapo.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [
+            BASE_DIR / "templates",
+            BASE_DIR / "templates" / "allauth_customized",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -76,6 +86,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "aapo.wsgi.application"
+
+#############################################
+# Django-Allauth & User Model Configuration #
+#############################################
+
+AUTHENTICATION_BACKENDS = [
+    # built-in django authentication backend (used for login to django admin)
+    "django.contrib.auth.backends.ModelBackend",
+    # backend for allauth-specific login process
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
 
 
 # Database
