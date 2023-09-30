@@ -8,11 +8,18 @@
     {% endblock head_title %}
   </title>
 
+  {# Include DaisyUI and TailwindCSS via CDN #}
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.8.2/dist/full.css" rel="stylesheet" type="text/css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+
   {% block extra_head %}
   {% endblock extra_head %}
 
 </head>
 <body>
+
+{% include "_navbar.html" %}
+
 {% block content %}
 {% endblock content %}
 

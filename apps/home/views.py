@@ -11,3 +11,7 @@ def index(request):
 @login_required
 def calendar(request):
     return render(request, "home/calendar.html")
+
+
+def test(request):
+    return render(request, "home/test.html")
