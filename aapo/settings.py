@@ -46,9 +46,7 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
 ]
 
-PROJECT_APPS = [
-    "apps.home",
-]
+PROJECT_APPS = ["apps.home", "apps.users"]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
@@ -90,6 +88,8 @@ WSGI_APPLICATION = "aapo.wsgi.application"
 #############################################
 # Django-Allauth & User Model Configuration #
 #############################################
+
+AUTH_USER_MODEL = "users.CustomUser"
 
 AUTHENTICATION_BACKENDS = [
     # built-in django authentication backend (used for login to django admin)
