@@ -1,0 +1,65 @@
+= Reading Streak Traker
+
+This repository contains the implementation of a reading streak tracker. It is implemented using the https://www.djangoproject.com/[Django web framework] and intended as a supporting tool to assist participants of the "Fluent Python Reading Journey" (a reading group hosted by the PDM community) to track their reading streaks and help build a long-term habit in a joyful way.
+
+Inspiration is taken form the "Seinfeld Calendar" (https://lifehacker.com/jerry-seinfelds-productivity-secret-281626[1]), the Pybites CodeChallenges Platform Progress Tracker (https://codechalleng.es/[2]) and the GitHub contribution calendar (https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/viewing-contributions-on-your-profile[3]).
+
+The initial birth of this app dates back to a live programming example (namely, how to render an activity-tracking calendar view from some suitable Python data structures) during a https://pybit.es/catalogue/the-pdm-program/[PDM] code clinic and was subsequently extended to the full-fledged web application that now found a home in this repository.
+
+== Setup
+
+=== Prerequisites
+
+- Python 3.11
+- Optional: Tailwind CLI (https://tailwindcss.com/blog/standalone-cli[Installation instructions])
+** Note: Not needed for now, since we load TailwindCSS & DaisyUI via a CDN for the initial development of this application
+
+=== Setup instructions for local development
+
+. Clone the repository
+. Create a virtual environment
+. Install the required dependencies
+. Run the migrations
+. Load the testing data (includes a superuser) via the fixtures
+. (Yet to be added: Run TailwindCSS to generate the relevant CSS static files)
+** For now, we use a CDN, so this step isn't necessary
+. Run the development server
+
+.Shell commands to get started with local development
+[source, bash]
+----
+# Clone the repo
+git clone https://github.com/michaelwknott/reading-streak-tracker
+cd reading-streak-tracker
+
+# Create a virtual environment with the required dependencies
+python -m venv venv --copies
+source venv/bin/activate
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
+
+# Run the migrations and load sample data
+python manage.py migrate
+python manage.py loaddata demo_data.yaml
+
+# Run TailwindCSS to generate the CSS files (not included in the repository)
+# Note: currently not yet required
+# tailwindcss build -i static/css/tailwind/input.css -o static/css/tailwind/output.css
+
+# Run the local development server
+python manage.py runserver
+----
+
+== Technologies used
+
+The major technologies in use for this project are:
+
+- https://www.djangoproject.com[Django]
+- https://tailwindcss.com[TailwindCSS] & https://daisyui.com[DaisyUI]
+** For layout and styling
+- https://allauth.org/[django-allauth]
+** To help with the authentication flow
+
+
+== Glossary
+PDM: https://pybit.es/catalogue/the-pdm-program/[Python Developer Mindset Program]
