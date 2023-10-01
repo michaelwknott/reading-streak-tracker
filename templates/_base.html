@@ -1,4 +1,8 @@
 {# template/_base.html #}
+
+{% load static %}
+{% load custom_filters %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +29,7 @@
 {% if messages %}
   <ul class="messages">
     {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      <li{% if message.tags %} class="{{ message.tags|tailwind_message_tag }}"{% endif %}>{{ message }}</li>
     {% endfor %}
   </ul>
 {% endif %}
