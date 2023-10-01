@@ -1,0 +1,49 @@
+{# template/_base.html #}
+
+{% load static %}
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>
+    {% block head_title %}
+      Reading Streak Tracker
+    {% endblock head_title %}
+  </title>
+
+  {# Include DaisyUI and TailwindCSS via CDN #}
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.8.2/dist/full.css" rel="stylesheet" type="text/css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  {% block extra_head %}
+  {% endblock extra_head %}
+
+</head>
+<body>
+
+{% include "_navbar.html" %}
+
+{# Display messages, if any #}
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags|tailwind_message_tag }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+
+{# Wrap page contents from views in a nice-looking container #}
+<div class="min-h-screen pt-20 flex flex-col items-center bg-gray-100">
+  <div class="p-4 sm:p-8 bg-white rounded-lg shadow-md w-full max-w-3xl">
+    {% block content %}
+    {% endblock content %}
+  </div>
+</div>
+
+{% block extra_body %}
+{% endblock extra_body %}
+</body>
+</html>

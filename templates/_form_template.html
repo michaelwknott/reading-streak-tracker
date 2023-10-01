@@ -1,0 +1,19 @@
+{# templates/_form_template.html #}
+{% for field in form %}
+
+  <div class="mb-3">
+    {% if field.use_fieldset %}
+      <fieldset>
+        {% if field.label %} {{ field.legend_tag }} {% endif %}
+    {% else %}
+      {% if field.label %} {{ field.legend_tag }} {% endif %}
+    {% endif %}
+    <p class="text-muted">{{ field.help_text }}</p>
+    {{ field.errors }}
+    {{ field }}
+    {% if field.use_fieldset %}
+      </fieldset>
+    {% endif %}
+
+  </div>
+{% endfor %}

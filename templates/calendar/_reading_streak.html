@@ -1,0 +1,18 @@
+<!-- apps/templates/calendar/_reading_streak.html -->
+<table>
+    <tr>{{ month_name }} {{ year }}</tr>
+    <tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr>
+    {% for week in streak_calendar %}
+    <tr>
+        {% for day in week %}
+        {% if day.day == 0 %}
+        <td></td>
+        {% elif day.read %}
+        <td class='read' style='background-color: green;'>{{ day.day }}</td>
+        {% else %}
+        <td>{{ day.day }}</td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>

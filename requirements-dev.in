@@ -1,3 +1,8 @@
+# After making changes run the following commands from the repo root to install the new packages:
+# pip-compile requirements-dev.in
+# pip install requirements-dev.txt
+# All in one:
+# pip-compile requirements-dev.in && pip install -r requirements-dev.txt
 -c requirements.txt
 
 black
@@ -8,3 +13,4 @@ flake8
 isort
 pip-tools
 pre-commit
+ipython # for nicer django shell experience during development

@@ -1,3 +1,4 @@
+# script.py
 import calendar
 from typing import NamedTuple
 

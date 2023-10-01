@@ -1,0 +1,45 @@
+# apps/users/fixtures/demo_data.yaml
+
+- model: users.customuser
+  pk: 1
+  fields:
+    username: "admin"
+    # trivial password for local development: admin
+    password: "pbkdf2_sha256$600000$7HuvJmS6js3A1idMt5x5GG$nZpSFQltmovV/dGCJ4QP+eTsEd3wJ5OKphsAFeiyXDA="
+    is_superuser: true
+    is_staff: true
+    active_dates: []
+# Superuser with trivial credentials
+
+- model: users.customuser
+  pk: 2
+  fields:
+    username: "demo1"
+    # password: demo1
+    password: "pbkdf2_sha256$600000$eXb7J6Y4xwL2KHRIeOXeIO$ziK/UBYY24WOf6WeL+FYDjS3iilYdOBa+QV2ECMxLgU="
+    is_superuser: false
+    is_staff: false
+    active_dates: ["2023-09-01", "2023-09-02", "2023-09-03"]
+# Demo user 1 with some active dates
+
+- model: users.customuser
+  pk: 3
+  fields:
+    username: "demo2"
+    # password: demo2
+    password: "pbkdf2_sha256$600000$tCWsNjOvUL5MaNBhzgF3np$KAGXkmhS8eQxmEAJY5onGP63VNck3zRLXhVeQtYB6nY="
+    is_superuser: false
+    is_staff: false
+    active_dates: ["2023-09-04", "2023-09-05", "2023-09-06"]
+# Demo user 2 with some active dates
+
+# Note:
+# To create a specific password in hashed format the following code can be used:
+#
+#```python
+#from django.contrib.auth.hashers import make_password
+#password = 'demo'
+## Hash the password
+#hashed_password = make_password(password)
+#print(hashed_password) # for use in fixture
+#```
