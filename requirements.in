@@ -10,3 +10,6 @@ django-allauth
 PyYAML # For fixtures since YAML allows for comments
 django-browser-reload
 crispy-tailwind # for pretty looking forms
+environs[django] # for environment variables
+psycopg2-binary # for postgres
+gunicorn # for running production server

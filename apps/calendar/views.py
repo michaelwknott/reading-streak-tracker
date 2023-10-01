@@ -1,15 +1,16 @@
 # apps/calendar/views.py
 
-from datetime import date
-from .models import CodingDay
+from datetime import date, datetime
+
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import HttpResponseBadRequest
+from django.shortcuts import redirect, render
+from django.utils import timezone
+
+from apps.calendar.models import ReadingDay
 from apps.calendar.utils.coding_streak_helper import CodingStreak
 
-from django.shortcuts import render, redirect
-from django.utils import timezone
-from apps.calendar.models import ReadingDay
-from django.core.exceptions import ObjectDoesNotExist
-from datetime import datetime
-from django.http import HttpResponseBadRequest
+from .models import CodingDay
 
 
 def toggle_reading_day(request):

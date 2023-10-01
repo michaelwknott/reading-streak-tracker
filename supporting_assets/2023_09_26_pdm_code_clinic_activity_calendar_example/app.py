@@ -1,9 +1,8 @@
 # app.py
 from datetime import datetime
 
-from flask import Flask, redirect, render_template_string, request, url_for
-
 from db import CodingDay, db
+from flask import Flask, redirect, render_template_string, request, url_for
 from script import CodingStreak
 
 app = Flask(__name__)

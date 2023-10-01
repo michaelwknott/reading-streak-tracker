@@ -2,8 +2,13 @@
 [flake8]
 max-line-length = 100
 extend-ignore = E203
-exclude = apps/*/migrations/*.py
-# Note: This exclude pattern will match any Python file (*.py) under any migrations directory
-# that is itself under the apps directory. We exclude the migration files, as they are managed by
-# Django and developers don't usually actively make changes here. By default Django-generated
-# migration files do not adhere to the 100 character limit (some lines are even 130+ characters).
+exclude = apps/*/migrations/*.py,
+    aapo/settings_production.py
+# Note:
+# The `apps/*/migrations/*.py` exclude pattern will match any Python file (*.py) under any
+# migrations directory that is itself under the apps directory. We exclude the migration files,
+# as they are managed by Django and developers don't usually actively make changes here.
+# By default Django-generated migration files do not adhere to the 100 character limit
+# (some lines are even 130+ characters).
+# `aapo/settings_production.py` is excluded since it contains a `from .settings import *` import which
+# in this case is a purposeful decision and therefore false positive for the `F403`, and `F405` flake8 errors.
