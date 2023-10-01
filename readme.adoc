@@ -19,10 +19,9 @@ The initial birth of this app dates back to a live programming example (namely, 
 . Clone the repository
 . Create a virtual environment
 . Install the required dependencies
+. Install the pre-commit hooks
 . Run the migrations
 . Load the testing data (includes a superuser) via the fixtures
-. (Yet to be added: Run TailwindCSS to generate the relevant CSS static files)
-** For now, we use a CDN, so this step isn't necessary
 . Run the development server
 
 .Shell commands to get started with local development
@@ -38,17 +37,17 @@ source venv/bin/activate
 pip install -r requirements.txt
 pip install -r requirements-dev.txt
 
+# Install pre-commit hooks
+pre-commit install # <.>
+
 # Run the migrations and load sample data
 python manage.py migrate
 python manage.py loaddata demo_data.yaml
 
-# Run TailwindCSS to generate the CSS files (not included in the repository)
-# Note: currently not yet required
-# tailwindcss build -i static/css/tailwind/input.css -o static/css/tailwind/output.css
-
 # Run the local development server
 python manage.py runserver
 ----
+<.> Installing the pre-commit hooks, while not strictly necessary for simply running the local development version, is highly recommended to ensure that the code quality stays high and consistent. We see it as essential and thus include this step directly in the setup instructions.
 
 == Technologies used
 
