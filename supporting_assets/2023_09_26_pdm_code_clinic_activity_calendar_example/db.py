@@ -1,4 +1,6 @@
+# db.py
 from datetime import datetime
+
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -17,7 +19,5 @@ class CodingDay(db.Model):
             end_date = datetime(year, month + 1, 1)
         return [
             day.date.day
-            for day in cls.query.filter(
-                cls.date >= start_date, cls.date < end_date
-            ).all()
+            for day in cls.query.filter(cls.date >= start_date, cls.date < end_date).all()
         ]

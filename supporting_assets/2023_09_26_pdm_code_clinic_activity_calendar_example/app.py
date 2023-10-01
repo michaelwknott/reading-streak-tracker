@@ -1,9 +1,10 @@
+# app.py
 from datetime import datetime
 
-from flask import Flask, render_template_string, request, redirect, url_for
+from flask import Flask, redirect, render_template_string, request, url_for
 
+from db import CodingDay, db
 from script import CodingStreak
-from db import db, CodingDay
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
