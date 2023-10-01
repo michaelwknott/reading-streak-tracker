@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: reading_streak_tracker
+    env: python
+    buildCommand: "./yari/deploy/build.sh"
+    startCommand: "./yari/deploy/start.sh"
+    region: frankfurt
+    plan: free # Change to `starter` to remain permanently available and have access to web shell
+    numInstances: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.5
+      - key: DJANGO_SETTINGS_MODULE
+        value: aapo.settings_production
