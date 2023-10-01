@@ -12,6 +12,19 @@ class CustomUser(AbstractUser):
         default=list, help_text="Dates stored as ISO formatted strings in a list"
     )
 
+    def get_reading_days(self, year, month):
+        """
+        This builds a list representation of the active days (as stored in this ORM model),
+        for a given month.
+        """
+        from datetime import datetime
+
+        start_date = datetime(year, month, 1)
+        end_date = datetime(year, month + 1, 1) if month != 12 else datetime(year + 1, 1, 1)
+        return [
+            day.date.day for day in self.readingday_set.filter(date__range=(start_date, end_date))
+        ]
+
     def add_active_date(self, date: datetime.date) -> None:
         """
         Add a new active date to the active_dates JSON field.

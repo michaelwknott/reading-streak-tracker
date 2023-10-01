@@ -3,6 +3,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path("toggle_reading_day/", views.toggle_reading_day, name="toggle_reading_day"),
     # Paths for initial POC of calendar (isolated from user model and the rest of the app)
     path(
         "calendar_in_isolation/", views.calendar_in_isolation, name="calendar_in_isolation"

@@ -1,5 +1,17 @@
 # apps/calendar/models.py
 from django.db import models
+from apps.users.models import CustomUser
+
+
+class ReadingDay(models.Model):
+    date = models.DateField()
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = (("user", "date"),)
+
+    def __str__(self):
+        return f"<ReadingDay {self.date} for {self.user.username}>"
 
 
 class CodingDay(models.Model):

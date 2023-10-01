@@ -1,6 +1,30 @@
+<!-- templates/homes/calendar.html -->
 {% extends '_base.html' %}
+{% load custom_calendar_tags %}
+
+
+{% block title %}Calendar{% endblock %}
+
 
 {% block content %}
-  <h1>Activity Calendar</h1>
+
+  <h1 class="text-lg">Reading Activity Calendar</h1>
   <p> Below you see your activity. Try to keep up the streak 🔥 </p>
-{% endblock %}
+
+
+  {# Render the pre-prepared calendar (via custom template tag #}
+  {% insert_reading_streak request.user year month %}
+
+  {# Form + Button to add additional active day to model #}
+  <form method="POST" action="{% url 'toggle_reading_day' %}">
+    {% csrf_token %}
+    <input class="btn" type="submit" value="Mark Today as active 🔥 (Toggle)"/>
+  </form>
+
+  <form method="POST" action="{% url 'toggle_reading_day' %}">
+    {% csrf_token %}
+    <input type="date" name="date" required/> <br>
+    <input class="btn" type="submit" value="Mark specific day (Toggle)"/>
+  </form>
+
+{% endblock content %}

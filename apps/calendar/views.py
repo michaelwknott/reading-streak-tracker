@@ -5,9 +5,40 @@ from .models import CodingDay
 from apps.calendar.utils.coding_streak_helper import CodingStreak
 
 from django.shortcuts import render, redirect
-from datetime import datetime, date
-from .models import CodingDay
-from .script import CodingStreak
+from django.utils import timezone
+from apps.calendar.models import ReadingDay
+from django.core.exceptions import ObjectDoesNotExist
+from datetime import datetime
+from django.http import HttpResponseBadRequest
+
+
+def toggle_reading_day(request):
+    if request.method == "POST":
+        user = request.user
+        if "date" in request.POST:
+            # Parse the date from the POST data
+            date_str = request.POST["date"]
+            date = datetime.strptime(date_str, "%Y-%m-%d").date()
+        else:
+            # Use today's date if no date is provided
+            date = timezone.now().date()
+
+        try:
+            reading_day = ReadingDay.objects.get(user=user, date=date)
+            reading_day.delete()
+        except ObjectDoesNotExist:
+            ReadingDay.objects.create(user=user, date=date)
+
+        return redirect("show_calendar", year=date.year, month=date.month)
+    else:
+        return HttpResponseBadRequest()
+
+
+##########################################################
+# Logic for coding streak calendar                       #
+# (in isolation from user model and the rest of the app) #
+##########################################################
+
 
 def calendar_in_isolation(request):
     today = date.today()
