@@ -12,3 +12,4 @@ django-browser-reload
 crispy-tailwind # for pretty looking forms
 environs[django] # for environment variables
 psycopg2-binary # for postgres
+gunicorn # for running production server
