@@ -22,6 +22,7 @@ The initial birth of this app dates back to a live programming example (namely, 
 . Install the pre-commit hooks
 . Run the migrations
 . Load the testing data (includes a superuser) via the fixtures
+. Set `DEBUG=1` and `SECRET_KEY='secret'` in the `.env` file in the project root for local development
 . Run the development server
 
 .Shell commands to get started with local development
@@ -44,10 +45,14 @@ pre-commit install # <.>
 python manage.py migrate
 python manage.py loaddata demo_data.yaml
 
+# Set up the .env file for local development
+echo -e "DEBUG=1\nSECRET_KEY='secret'" >> .env  # <.>
+
 # Run the local development server
 python manage.py runserver
 ----
 <.> Installing the pre-commit hooks, while not strictly necessary for simply running the local development version, is highly recommended to ensure that the code quality stays high and consistent. We see it as essential and thus include this step directly in the setup instructions.
+<.> The -e flag enables the interpretation of backslash escapes such as \n for a new line.
 
 == Technologies used
 
