@@ -55,15 +55,15 @@ LOGGING = {
         },
     },
     "loggers": {
-        "django": {
-            "handlers": ["file_overall", "console"],
-            "level": "INFO",
-            "propagate": True,
-        },
+        # "django": {
+        #     "handlers": ["file_overall", "console"],
+        #     "level": "INFO",
+        #     "propagate": True,
+        # },
         "apps": {
             "handlers": ["file_overall", "console"],
             "level": "INFO",
-            "propagate": True,
+            "propagate": False,
         },
     },
 }
