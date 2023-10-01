@@ -1,5 +1,9 @@
 from .settings import *
 
+import logging
+
+log = logging.getLogger(__name__)
+
 DEBUG = False
 
 # fix ssl mixed content issues
@@ -14,7 +18,10 @@ CSRF_COOKIE_SECURE = True
 USE_HTTPS_IN_ABSOLUTE_URLS = True
 
 RENDER_DOMAIN = env("RENDER_DOMAIN", default="")
-ALLOWED_HOSTS = [RENDER_DOMAIN]
+ALLOWED_HOSTS = [
+    RENDER_DOMAIN,
+]
+log.info(f"ALLOWED_HOSTS: {ALLOWED_HOSTS}, RENDER_DOMAIN: {RENDER_DOMAIN}")
 
 # Adjust logging config for production
 # File handler instead of StreamHandler etc.
