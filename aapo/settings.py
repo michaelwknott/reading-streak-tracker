@@ -51,7 +51,7 @@ THIRD_PARTY_APPS = [
     "crispy_tailwind",
 ]
 
-PROJECT_APPS = ["apps.home", "apps.users"]
+PROJECT_APPS = ["apps.home", "apps.users", "apps.calendar"]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 

@@ -1,0 +1,25 @@
+<!-- templates/calendar/calendar.html -->
+{% extends '_base.html' %}
+
+{% block title %}Calendar{% endblock %}
+
+{% block content %}
+
+  <h1 class="text-lg">Calendar</h1>
+
+  {# Render the pre-prepared calendar HTML #}
+  {{ html_calendar|safe }}
+
+  {# Form + Button to add additional active day to model #}
+  <form method="POST" action="{% url 'toggle_coding_day_today' %}">
+    {% csrf_token %}
+    <input class="btn" type="submit" value="Mark Today as Coding Day (Toggle)"/>
+  </form>
+
+  <form method="POST" action="{% url 'toggle_coding_day_by_form' %}">
+    {% csrf_token %}
+    <input type="date" name="date" required/> <br>
+    <input class="btn" type="submit" value="Mark specific coding day (Toggle)"/>
+  </form>
+
+{% endblock content %}
