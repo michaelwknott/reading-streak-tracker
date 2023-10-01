@@ -1,8 +1,8 @@
 # apps/calendar/templatetags/custom_calendar_tags.py
+import calendar
 from typing import NamedTuple
 
 from django import template
-import calendar
 
 register = template.Library()
 

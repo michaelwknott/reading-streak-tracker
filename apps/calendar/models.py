@@ -1,5 +1,6 @@
 # apps/calendar/models.py
 from django.db import models
+
 from apps.users.models import CustomUser
 
 

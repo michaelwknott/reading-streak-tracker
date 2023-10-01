@@ -11,7 +11,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
     path("", include("apps.home.urls")),
-    # dedicated namespace for `calendar` app with POC migration of calendar from code clinic to Django
+    # dedicated endpoint namespace for `calendar` app with POC calendar implementation
     path("calendar/", include("apps.calendar.urls")),
     # django browser reload
     path("__reload__/", include("django_browser_reload.urls")),
